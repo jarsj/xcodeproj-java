@@ -1,0 +1,185 @@
+/**
+*	Run "gradle clean pP publish" to publish locally
+*
+*	Run "gradle clean pP publish -Pmvncentral=true" command twice to publish in sonatype staging repository
+*	
+*	Should have the following in user-local gradle.properties:
+*	sonatypeUsername=
+*	sonatypePassword=
+*	signing.keyId=
+*	signing.password=
+*	signing.secretKeyRingFile=
+**/
+
+['signing', 'java', 'eclipse', 'maven-publish'].each {
+  apply plugin: it
+}
+
+def isMvnCentral
+group = 'com.jarsj'
+archivesBaseName = "xcodeproj"
+version = '1.0'
+
+if(hasProperty("mvncentral")) {
+  isMvnCentral = mvncentral
+}
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+}
+
+dependencies {
+  compile 'commons-lang:commons-lang:2.6'
+}
+
+// javadoc.jar generation
+task javadocJar (type: Jar, dependsOn: javadoc) { 
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+// sources.jar generation
+task sourceJar(type: Jar) {
+  classifier = 'sources'
+  from sourceSets.main.allJava
+}
+
+// pom file name
+ext {
+  pomFilePath = "${project.projectDir}/tmp/pom.xml"
+  pomFile = file(pomFilePath)
+}
+
+// add configuration for pom signing
+configurations {
+  pom
+}
+
+// summarize artifacts
+artifacts {
+  archives jar
+  archives javadocJar
+  archives sourceJar
+  if (pomFile.exists()) {
+    pom pomFile
+  }
+}
+
+// sign all artifacts
+task signJars (type : Sign, dependsOn: [jar, javadocJar, sourceJar]) {
+  sign configurations.archives
+}
+
+// sign pom
+task signPom(type: Sign) {
+  sign configurations.pom
+}
+
+// defining which tasks should be called
+if (project.ext.pomFile.exists()) {
+  task preparePublication (dependsOn : [signJars, signPom])
+} else {
+  task preparePublication (dependsOn : signJars)
+}
+
+// extract signatures and add classifier and extension to them
+def getSignatureFiles = {
+  def allFiles = project.tasks.signJars.signatureFiles.collect { it }
+  def signedSources = allFiles.find { it.name.contains('-sources') }
+  def signedJavadoc = allFiles.find { it.name.contains('-javadoc') }
+  def signedJar = (allFiles - [signedSources, signedJavadoc])[0]
+  return [
+    [archive: signedSources, classifier: 'sources', extension: 'jar.asc'],
+    [archive: signedJavadoc, classifier: 'javadoc', extension: 'jar.asc'],
+    [archive: signedJar,     classifier: null,      extension: 'jar.asc']
+  ]
+}
+
+// extract pom signature
+def getPomSignature = {
+  return project.tasks.signPom.signatureFiles.collect{it}[0]
+}
+
+publishing {
+  publications {
+    gpgJars(MavenPublication) {
+      getSignatureFiles().each {signature ->
+	artifact (signature.archive) {
+	  classifier = signature.classifier
+	  extension  = signature.extension
+	}
+      }
+    }
+    if (project.ext.pomFile.exists()) {
+      gpgPom(MavenPublication) {
+	artifact (getPomSignature()) {
+	  classifier = null
+	  extension  = 'pom.asc'
+	}
+      }
+    }
+    
+    mavenCustom(MavenPublication) {
+      from components.java
+      
+      artifact sourceJar {
+	classifier "sources"
+      }
+      
+      artifact javadocJar {
+	classifier "javadoc"
+      }
+      
+      pom.withXml {
+	asNode().children().last() + {
+	  resolveStrategy = Closure.DELEGATE_FIRST
+	  name 'jappy-framework'
+	  packaging 'jar'
+	  description 'jappy-framework'
+	  url 'https://github.com/jarsj/jappy-framework'
+	  scm {
+	    url 'scm:git@github.com:jarsj/jappy-framework.git'
+	    connection 'scm:git@github.com:jarsj/jappy-framework.git'
+	    developerConnection 'scm:git@github.com:jarsj/jappy-framework.git'
+	  }
+	  licenses {
+	    license {
+	      name 'The Apache Software License, Version 2.0'
+	      url 'http://www.apache.org/license/LICENSE-2.0.txt'
+	      distribution 'repo'
+	    }
+	  }
+	  developers {
+	    developer {
+	      id 'jarsj'
+	      name 'Harsh Jain'
+	      email 'harsh@crispygam.es'
+	    }
+	  }
+	}
+      }
+    }
+  }
+  model {
+    if(isMvnCentral=="true") {
+      tasks.generatePomFileForMavenCustomPublication {
+	destination = pomFilePath
+      }
+    }
+  }
+  
+  repositories {
+    if (project.ext.pomFile.exists() && isMvnCentral=="true") {
+      maven {
+	url 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+	credentials {
+	  username = sonatypeUsername
+	  password = sonatypePassword
+	}
+      }
+    } else {
+      mavenLocal()
+    }
+  }
+}
