@@ -1,5 +1,6 @@
 package com.jarsj;
 
-public class PBXFrameworksBuildPhase {
-
+public class PBXFrameworksBuildPhase extends PBXBuildPhase {
+	
+	/*No specific members of this class*/
 }
