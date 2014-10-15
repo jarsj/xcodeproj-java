@@ -12,6 +12,11 @@ public class PBXContainerItemProxy extends Element {
 	
 	private String remoteInfo;
 
+	public PBXContainerItemProxy() {
+		super("PBXContainerItemProxy");
+		this.proxyType = 1;
+	}
+	
 	public PBXProject getContainerPortal() {
 		return containerPortal;
 	}
@@ -24,8 +29,10 @@ public class PBXContainerItemProxy extends Element {
 		return proxyType;
 	}
 
-	public void setProxyType(int proxyType) {
-		this.proxyType = proxyType;
+	public void setProxyType(Object proxyType) {
+		if(proxyType != null) {
+			this.proxyType = (Integer) proxyType;
+		}
 	}
 
 	public PBXTarget getRemoteGlobalIDString() {

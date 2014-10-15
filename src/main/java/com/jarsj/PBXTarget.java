@@ -1,5 +1,6 @@
 package com.jarsj;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class PBXTarget extends Element {
@@ -19,6 +20,13 @@ public abstract class PBXTarget extends Element {
 	/* The product name. */
 	private String productName;
 
+	public PBXTarget(String isa) {
+		super(isa);
+		this.buildConfigurationList = new XCConfigurationList();
+		this.buildPhases = new ArrayList<PBXBuildPhase>();
+		this.dependencies = new ArrayList<PBXTargetDependency>();
+	}
+	
 	public XCConfigurationList getBuildConfigurationList() {
 		return buildConfigurationList;
 	}
@@ -31,16 +39,24 @@ public abstract class PBXTarget extends Element {
 		return buildPhases;
 	}
 
-	public void setBuildPhases(List<PBXBuildPhase> buildPhases) {
-		this.buildPhases = buildPhases;
+	public void setBuildPhases(List<Object> buildPhases) {
+		if(buildPhases != null) {
+			for(Object obj : buildPhases) {
+				this.buildPhases.add((PBXBuildPhase)obj);
+			}
+		}
 	}
 
 	public List<PBXTargetDependency> getDependencies() {
 		return dependencies;
 	}
 
-	public void setDependencies(List<PBXTargetDependency> dependencies) {
-		this.dependencies = dependencies;
+	public void setDependencies(List<Object> dependencies) {
+		if(dependencies != null) {
+			for(Object obj : dependencies) {
+				this.dependencies.add((PBXTargetDependency)obj);
+			}
+		}
 	}
 
 	public String getName() {

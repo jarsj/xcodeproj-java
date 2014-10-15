@@ -7,6 +7,10 @@ public class PBXTargetDependency extends Element {
 	
 	/* The object is a reference to a PBXContainerItemProxy element. */
 	private PBXContainerItemProxy targetProxy;
+	
+	public PBXTargetDependency() {
+		super("PBXTargetDependency");
+	}
 
 	public PBXNativeTarget getTarget() {
 		return target;

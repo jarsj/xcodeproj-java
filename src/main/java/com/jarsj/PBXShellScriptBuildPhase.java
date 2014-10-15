@@ -1,5 +1,6 @@
 package com.jarsj;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PBXShellScriptBuildPhase extends PBXBuildPhase {
@@ -16,20 +17,36 @@ public class PBXShellScriptBuildPhase extends PBXBuildPhase {
 	/*The content of the script shell.*/
 	private String shellScript;
 
+	public PBXShellScriptBuildPhase() {
+		super("PBXShellScriptBuildPhase");
+		this.inputPaths = new ArrayList<String>();
+		this.outputPaths = new ArrayList<String>();
+		this.shellPath = "";
+		this.shellScript = "";
+	}
+	
 	public List<String> getInputPaths() {
 		return inputPaths;
 	}
 
-	public void setInputPaths(List<String> inputPaths) {
-		this.inputPaths = inputPaths;
+	public void setInputPaths(List<Object> inputPaths) {
+		if(inputPaths != null) {
+			for(Object obj : inputPaths) {
+				this.inputPaths.add((String)obj);
+			}
+		}
 	}
 
 	public List<String> getOutputPaths() {
 		return outputPaths;
 	}
 
-	public void setOutputPaths(List<String> outputPaths) {
-		this.outputPaths = outputPaths;
+	public void setOutputPaths(List<Object> outputPaths) {
+		if(outputPaths != null) {
+			for(Object obj : outputPaths) {
+				this.outputPaths.add((String)obj);
+			}
+		}
 	}
 
 	public String getShellPath() {

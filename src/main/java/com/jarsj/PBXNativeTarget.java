@@ -10,6 +10,10 @@ public class PBXNativeTarget extends PBXTarget {
 	
 	/* See the PBXProductType enumeration. */
 	private String productType;
+	
+	public PBXNativeTarget() {
+		super("PBXNativeTarget");
+	}
 
 	public String getProductInstallPath() {
 		return productInstallPath;

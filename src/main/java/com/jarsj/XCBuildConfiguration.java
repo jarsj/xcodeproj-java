@@ -1,5 +1,6 @@
 package com.jarsj;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class XCBuildConfiguration extends Element {
@@ -12,6 +13,11 @@ public class XCBuildConfiguration extends Element {
 	
 	/* The configuration name. */
 	private String name;
+	
+	public XCBuildConfiguration() {
+		super("XCBuildConfiguration");
+		this.buildSettings = new HashMap<String, Object>();
+	}
 
 	public String getBaseConfigurationReference() {
 		return baseConfigurationReference;

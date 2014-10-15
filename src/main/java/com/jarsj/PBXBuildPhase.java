@@ -1,5 +1,6 @@
 package com.jarsj;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class PBXBuildPhase extends Element {
@@ -11,20 +12,33 @@ public abstract class PBXBuildPhase extends Element {
 	
 	private int runOnlyForDeploymentPostprocessing;
 
+	protected PBXBuildPhase(String isa) {
+		super(isa);
+		this.buildActionMask = Integer.MAX_VALUE;
+		this.runOnlyForDeploymentPostprocessing = 0;
+		this.files = new ArrayList<PBXBuildFile>();
+	}
+	
 	public int getBuildActionMask() {
 		return buildActionMask;
 	}
 
-	public void setBuildActionMask(int buildActionMask) {
-		this.buildActionMask = buildActionMask;
+	public void setBuildActionMask(Object buildActionMask) {
+		if(buildActionMask != null) {
+			this.buildActionMask = (Integer)buildActionMask;
+		}		
 	}
 
 	public List<PBXBuildFile> getFiles() {
 		return files;
 	}
 
-	public void setFiles(List<PBXBuildFile> files) {
-		this.files = files;
+	public void setFiles(List<Object> files) {
+		if(files != null) {
+			for(Object obj : files) {
+				this.files.add((PBXBuildFile)obj);
+			}
+		}
 	}
 
 	public int getRunOnlyForDeploymentPostprocessing() {
@@ -32,7 +46,9 @@ public abstract class PBXBuildPhase extends Element {
 	}
 
 	public void setRunOnlyForDeploymentPostprocessing(
-			int runOnlyForDeploymentPostprocessing) {
-		this.runOnlyForDeploymentPostprocessing = runOnlyForDeploymentPostprocessing;
+			Object runOnlyForDeploymentPostprocessing) {
+		if(runOnlyForDeploymentPostprocessing != null) {
+			this.runOnlyForDeploymentPostprocessing = (Integer)runOnlyForDeploymentPostprocessing;
+		}
 	}
 }

@@ -1,11 +1,13 @@
 package com.jarsj;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Root {
+public class PBXDocument {
 
-	private int archiveVersion = 1;	
+	private int archiveVersion;	
 	
 	private List<Element> classes;
 	
@@ -17,13 +19,22 @@ public class Root {
 	
 	/* The object is a reference to a PBXProject element. */
 	private PBXProject rootObject;
-
+	
+	public PBXDocument() {
+		this.classes = new ArrayList<Element>();
+		this.objects = new HashMap<String, Element>();
+		this.archiveVersion = 1;
+		this.objectVersion = 46;
+	}
+	
 	public int getArchiveVersion() {
 		return archiveVersion;
 	}
 
-	public void setArchiveVersion(int archiveVersion) {
-		this.archiveVersion = archiveVersion;
+	public void setArchiveVersion(Object archiveVersion) {
+		if(archiveVersion != null) {
+			this.archiveVersion = (Integer) archiveVersion;
+		}
 	}
 
 	public List<Element> getClasses() {
@@ -38,8 +49,10 @@ public class Root {
 		return objectVersion;
 	}
 
-	public void setObjectVersion(int objectVersion) {
-		this.objectVersion = objectVersion;
+	public void setObjectVersion(Object objectVersion) {
+		if(objectVersion != null) {
+			this.objectVersion = (Integer) objectVersion;
+		}
 	}
 
 	public Map<String, Element> getObjects() {

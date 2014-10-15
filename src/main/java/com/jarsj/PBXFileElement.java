@@ -7,6 +7,10 @@ public abstract class PBXFileElement extends Element {
 	
 	/*The PBXSourceTree enumeration.*/
 	private String sourceTree;
+	
+	protected PBXFileElement(String isa) {
+		super(isa);
+	}
 
 	public String getName() {
 		return name;

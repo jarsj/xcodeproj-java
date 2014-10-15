@@ -1,5 +1,6 @@
 package com.jarsj;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class XCConfigurationList extends Element{
@@ -11,21 +12,33 @@ public class XCConfigurationList extends Element{
 	
 	/* The default configuration name. */
 	private String defaultConfigurationName;
+	
+	public XCConfigurationList() {
+		super("XCConfigurationList");
+		this.defaultConfigurationIsVisible = 0;
+		this.buildConfigurations = new ArrayList<XCBuildConfiguration>();
+	}
 
 	public List<XCBuildConfiguration> getBuildConfigurations() {
 		return buildConfigurations;
 	}
 
-	public void setBuildConfigurations(List<XCBuildConfiguration> buildConfigurations) {
-		this.buildConfigurations = buildConfigurations;
+	public void setBuildConfigurations(List<Object> buildConfigurations) {
+		if(buildConfigurations != null) {
+			for(Object obj : buildConfigurations) {
+				this.buildConfigurations.add((XCBuildConfiguration)obj);
+			}
+		}
 	}
 
 	public int getDefaultConfigurationIsVisible() {
 		return defaultConfigurationIsVisible;
 	}
 
-	public void setDefaultConfigurationIsVisible(int defaultConfigurationIsVisible) {
-		this.defaultConfigurationIsVisible = defaultConfigurationIsVisible;
+	public void setDefaultConfigurationIsVisible(Object defaultConfigurationIsVisible) {
+		if(defaultConfigurationIsVisible != null) {
+			this.defaultConfigurationIsVisible = (Integer)defaultConfigurationIsVisible;
+		}
 	}
 
 	public String getDefaultConfigurationName() {
