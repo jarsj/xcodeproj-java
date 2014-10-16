@@ -1,10 +1,10 @@
 package com.jarsj;
 
 
-public class PBXFileReference extends PBXFileElement{
+public class PBXFileReference extends PBXFileElement {
 
 	/* The PBXFileEncoding enumeration. */
-	private int fileEncoding;
+	private long fileEncoding;
 	
 	/* The PBXFileType enumeration. */
 	private String explicitFileType;
@@ -15,13 +15,19 @@ public class PBXFileReference extends PBXFileElement{
 	/* The path to the filename. */
 	private String path;
 	
-	public int getFileEncoding() {
+	public PBXFileReference() {
+		super("PBXFileReference");
+		this.fileEncoding = 0;
+	}
+	
+	public long getFileEncoding() {
 		return fileEncoding;
 	}
 	
-	public void setFileEncoding(int fileEncoding) {
-		
-		this.fileEncoding = fileEncoding;
+	public void setFileEncoding(Object fileEncoding) {
+		if(fileEncoding != null) {
+			this.fileEncoding = Long.parseLong(String.valueOf(fileEncoding));
+		}
 	}
 	public String getExplicitFileType() {
 		return explicitFileType;

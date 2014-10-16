@@ -11,6 +11,10 @@ public class PBXLegacyTarget extends PBXTarget {
     /*The build working directory.*/
     private String buildWorkingDirectory;
 
+    public PBXLegacyTarget() {
+    	super("PBXLegacyTarget");
+    }
+    
     /*The pass build settings in environment.*/
     private int passBuildSettingsInEnvironment;
 
@@ -42,7 +46,9 @@ public class PBXLegacyTarget extends PBXTarget {
 		return passBuildSettingsInEnvironment;
 	}
 
-	public void setPassBuildSettingsInEnvironment(int passBuildSettingsInEnvironment) {
-		this.passBuildSettingsInEnvironment = passBuildSettingsInEnvironment;
+	public void setPassBuildSettingsInEnvironment(Object passBuildSettingsInEnvironment) {
+		if(passBuildSettingsInEnvironment != null) {
+			this.passBuildSettingsInEnvironment =  (Integer)passBuildSettingsInEnvironment;
+		}
 	}
 }

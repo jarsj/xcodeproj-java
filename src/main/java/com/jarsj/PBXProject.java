@@ -1,5 +1,6 @@
 package com.jarsj;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +16,7 @@ public class PBXProject extends Element {
 	private String developmentRegion;
 	
 	/* Whether file encodings have been scanned. */
-	private String hasScannedForEncodings;
+	private int hasScannedForEncodings;
 	
 	/* The known regions for localized files. */
 	private List<String> knownRegions;
@@ -38,6 +39,21 @@ public class PBXProject extends Element {
 	/* The objects are a reference to a PBXTarget element. */
 	private List<PBXTarget> targets;
 
+	public PBXProject() {
+		super("PBXProject");
+        this.buildConfigurationList = new XCConfigurationList();
+        this.compatibilityVersion = "Xcode 3.2";
+        this.developmentRegion = "English";
+        this.hasScannedForEncodings = 1;
+        this.knownRegions = new ArrayList<String>();
+        this.knownRegions.add("en");
+        this.mainGroup = new PBXGroup();
+        this.projectDirPath = "";
+        this.projectReferences = new ArrayList<Map<String, Element>>();
+        this.projectRoot = "";
+        this.targets = new ArrayList<PBXTarget>();
+    }
+	
 	public XCConfigurationList getBuildConfigurationList() {
 		return buildConfigurationList;
 	}
@@ -51,7 +67,9 @@ public class PBXProject extends Element {
 	}
 
 	public void setCompatibilityVersion(String compatibilityVersion) {
-		this.compatibilityVersion = compatibilityVersion;
+		if(compatibilityVersion != null) {
+			this.compatibilityVersion = compatibilityVersion;
+		}
 	}
 
 	public String getDevelopmentRegion() {
@@ -62,20 +80,26 @@ public class PBXProject extends Element {
 		this.developmentRegion = developmentRegion;
 	}
 
-	public String getHasScannedForEncodings() {
+	public int getHasScannedForEncodings() {
 		return hasScannedForEncodings;
 	}
 
-	public void setHasScannedForEncodings(String hasScannedForEncodings) {
-		this.hasScannedForEncodings = hasScannedForEncodings;
+	public void setHasScannedForEncodings(Object hasScannedForEncodings) {
+		if(hasScannedForEncodings != null) {
+			this.hasScannedForEncodings = (Integer) hasScannedForEncodings;
+		}
 	}
 
 	public List<String> getKnownRegions() {
 		return knownRegions;
 	}
 
-	public void setKnownRegions(List<String> knownRegions) {
-		this.knownRegions = knownRegions;
+	public void setKnownRegions(List<Object> knownRegions) {
+		if(knownRegions != null) {
+			for(Object obj : knownRegions) {
+				this.knownRegions.add((String)obj);
+			}
+		}
 	}
 
 	public PBXGroup getMainGroup() {
@@ -106,8 +130,14 @@ public class PBXProject extends Element {
 		return projectReferences;
 	}
 
-	public void setProjectReferences(List<Map<String, Element>> projectReferences) {
-		this.projectReferences = projectReferences;
+	public void setProjectReferences(List<Object> projectReferences) {
+		if(projectReferences != null) {
+			for(Object obj : projectReferences) {
+				if(obj instanceof Map) {
+					this.projectReferences.add(XCodeProject.toElementMap((Map<String, Object>)obj));
+				}
+			}
+		}
 	}
 
 	public String getProjectRoot() {
@@ -122,7 +152,11 @@ public class PBXProject extends Element {
 		return targets;
 	}
 
-	public void setTargets(List<PBXTarget> targets) {
-		this.targets = targets;
+	public void setTargets(List<Object> targets) {
+		if(targets != null) {
+			for(Object target : targets) {
+				this.targets.add((PBXTarget)target);
+			}
+		}
 	}
 }

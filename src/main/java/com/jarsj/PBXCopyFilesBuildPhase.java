@@ -7,6 +7,12 @@ public class PBXCopyFilesBuildPhase extends PBXBuildPhase {
 	
 	private int dstSubfolderSpec;
 
+	public PBXCopyFilesBuildPhase() {
+		super("PBXCopyFilesBuildPhase");
+		this.dstPath = "";
+		this.dstSubfolderSpec = 16;
+	}
+	
 	public String getDstPath() {
 		return dstPath;
 	}
@@ -19,7 +25,9 @@ public class PBXCopyFilesBuildPhase extends PBXBuildPhase {
 		return dstSubfolderSpec;
 	}
 
-	public void setDstSubfolderSpec(int dstSubfolderSpec) {
-		this.dstSubfolderSpec = dstSubfolderSpec;
+	public void setDstSubfolderSpec(Object dstSubfolderSpec) {
+		if(dstSubfolderSpec != null) {
+			this.dstSubfolderSpec = (Integer) dstSubfolderSpec;
+		}	
 	}
 }
