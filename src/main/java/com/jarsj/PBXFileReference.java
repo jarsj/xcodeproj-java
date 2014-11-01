@@ -12,9 +12,6 @@ public class PBXFileReference extends PBXFileElement {
 	/* The PBXFileType enumeration. */
 	private String lastKnownFileType;
 	
-	/* The path to the filename. */
-	private String path;
-	
 	public PBXFileReference() {
 		super("PBXFileReference");
 		this.fileEncoding = 0;
@@ -44,12 +41,4 @@ public class PBXFileReference extends PBXFileElement {
 	public void setLastKnownFileType(String lastKnownFileType) {
 		this.lastKnownFileType = lastKnownFileType;
 	}
-	
-	public String getPath() {
-		return path;
-	}
-	
-	public void setPath(String path) {
-		this.path = path;
-	}		
 }

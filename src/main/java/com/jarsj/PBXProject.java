@@ -134,7 +134,7 @@ public class PBXProject extends Element {
 		if(projectReferences != null) {
 			for(Object obj : projectReferences) {
 				if(obj instanceof Map) {
-					this.projectReferences.add(XCodeProject.toElementMap((Map<String, Object>)obj));
+					this.projectReferences.add(PBXParser.toElementMap((Map<String, Object>)obj));
 				}
 			}
 		}

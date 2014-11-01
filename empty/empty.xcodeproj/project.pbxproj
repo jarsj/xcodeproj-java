@@ -14,22 +14,7 @@
 		3A3100DB19E793B4001FE814 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3100DA19E793B4001FE814 /* main.m */; };
 		3A3100DF19E793B4001FE814 /* FMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3100DE19E793B4001FE814 /* FMAppDelegate.m */; };
 		3A3100E119E793B4001FE814 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A3100E019E793B4001FE814 /* Images.xcassets */; };
-		3A3100E819E793B4001FE814 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A3100E719E793B4001FE814 /* XCTest.framework */; };
-		3A3100E919E793B4001FE814 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A3100CE19E793B4001FE814 /* Foundation.framework */; };
-		3A3100EA19E793B4001FE814 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A3100D219E793B4001FE814 /* UIKit.framework */; };
-		3A3100F219E793B4001FE814 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A3100F019E793B4001FE814 /* InfoPlist.strings */; };
-		3A3100F419E793B4001FE814 /* emptyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3100F319E793B4001FE814 /* emptyTests.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		3A3100EB19E793B4001FE814 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3A3100C319E793B4001FE814 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3A3100CA19E793B4001FE814;
-			remoteInfo = empty;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3A3100CB19E793B4001FE814 /* empty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = empty.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,11 +28,6 @@
 		3A3100DD19E793B4001FE814 /* FMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMAppDelegate.h; sourceTree = "<group>"; };
 		3A3100DE19E793B4001FE814 /* FMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMAppDelegate.m; sourceTree = "<group>"; };
 		3A3100E019E793B4001FE814 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		3A3100E619E793B4001FE814 /* emptyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = emptyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A3100E719E793B4001FE814 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		3A3100EF19E793B4001FE814 /* emptyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "emptyTests-Info.plist"; sourceTree = "<group>"; };
-		3A3100F119E793B4001FE814 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3A3100F319E793B4001FE814 /* emptyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = emptyTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,16 +41,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3A3100E319E793B4001FE814 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3A3100E819E793B4001FE814 /* XCTest.framework in Frameworks */,
-				3A3100EA19E793B4001FE814 /* UIKit.framework in Frameworks */,
-				3A3100E919E793B4001FE814 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,7 +48,6 @@
 			isa = PBXGroup;
 			children = (
 				3A3100D419E793B4001FE814 /* empty */,
-				3A3100ED19E793B4001FE814 /* emptyTests */,
 				3A3100CD19E793B4001FE814 /* Frameworks */,
 				3A3100CC19E793B4001FE814 /* Products */,
 			);
@@ -88,7 +57,6 @@
 			isa = PBXGroup;
 			children = (
 				3A3100CB19E793B4001FE814 /* empty.app */,
-				3A3100E619E793B4001FE814 /* emptyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,7 +67,6 @@
 				3A3100CE19E793B4001FE814 /* Foundation.framework */,
 				3A3100D019E793B4001FE814 /* CoreGraphics.framework */,
 				3A3100D219E793B4001FE814 /* UIKit.framework */,
-				3A3100E719E793B4001FE814 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -126,24 +93,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3A3100ED19E793B4001FE814 /* emptyTests */ = {
-			isa = PBXGroup;
-			children = (
-				3A3100F319E793B4001FE814 /* emptyTests.m */,
-				3A3100EE19E793B4001FE814 /* Supporting Files */,
-			);
-			path = emptyTests;
-			sourceTree = "<group>";
-		};
-		3A3100EE19E793B4001FE814 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				3A3100EF19E793B4001FE814 /* emptyTests-Info.plist */,
-				3A3100F019E793B4001FE814 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,24 +113,6 @@
 			productReference = 3A3100CB19E793B4001FE814 /* empty.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3A3100E519E793B4001FE814 /* emptyTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3A3100FA19E793B4001FE814 /* Build configuration list for PBXNativeTarget "emptyTests" */;
-			buildPhases = (
-				3A3100E219E793B4001FE814 /* Sources */,
-				3A3100E319E793B4001FE814 /* Frameworks */,
-				3A3100E419E793B4001FE814 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3A3100EC19E793B4001FE814 /* PBXTargetDependency */,
-			);
-			name = emptyTests;
-			productName = emptyTests;
-			productReference = 3A3100E619E793B4001FE814 /* emptyTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -191,11 +122,6 @@
 				CLASSPREFIX = FM;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Crispy Games Private Limited";
-				TargetAttributes = {
-					3A3100E519E793B4001FE814 = {
-						TestTargetID = 3A3100CA19E793B4001FE814;
-					};
-				};
 			};
 			buildConfigurationList = 3A3100C619E793B4001FE814 /* Build configuration list for PBXProject "empty" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -210,7 +136,6 @@
 			projectRoot = "";
 			targets = (
 				3A3100CA19E793B4001FE814 /* empty */,
-				3A3100E519E793B4001FE814 /* emptyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -222,14 +147,6 @@
 			files = (
 				3A3100D919E793B4001FE814 /* InfoPlist.strings in Resources */,
 				3A3100E119E793B4001FE814 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3A3100E419E793B4001FE814 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3A3100F219E793B4001FE814 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,37 +162,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3A3100E219E793B4001FE814 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3A3100F419E793B4001FE814 /* emptyTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3A3100EC19E793B4001FE814 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3A3100CA19E793B4001FE814 /* empty */;
-			targetProxy = 3A3100EB19E793B4001FE814 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3A3100D719E793B4001FE814 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				3A3100D819E793B4001FE814 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		3A3100F019E793B4001FE814 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3A3100F119E793B4001FE814 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -381,46 +274,6 @@
 			};
 			name = Release;
 		};
-		3A3100FB19E793B4001FE814 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/empty.app/empty";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "empty/empty-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "emptyTests/emptyTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		3A3100FC19E793B4001FE814 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/empty.app/empty";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "empty/empty-Prefix.pch";
-				INFOPLIST_FILE = "emptyTests/emptyTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -440,14 +293,7 @@
 				3A3100F919E793B4001FE814 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		3A3100FA19E793B4001FE814 /* Build configuration list for PBXNativeTarget "emptyTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3A3100FB19E793B4001FE814 /* Debug */,
-				3A3100FC19E793B4001FE814 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

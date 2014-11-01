@@ -5,6 +5,9 @@ public abstract class PBXFileElement extends Element {
 	/*The filename.*/
 	private String name;
 	
+	/*The path*/
+	private String path;
+	
 	/*The PBXSourceTree enumeration.*/
 	private String sourceTree;
 	
@@ -19,6 +22,14 @@ public abstract class PBXFileElement extends Element {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public void setPath(String path) {
+		this.path = path;
+	}
+	
+	public String getPath() {
+		return path;
+	}
 
 	public String getSourceTree() {
 		return sourceTree;
@@ -27,4 +38,5 @@ public abstract class PBXFileElement extends Element {
 	public void setSourceTree(String sourceTree) {
 		this.sourceTree = sourceTree;
 	}
+	
 }
