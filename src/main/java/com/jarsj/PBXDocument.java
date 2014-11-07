@@ -1,15 +1,13 @@
 package com.jarsj;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class PBXDocument {
 
 	private int archiveVersion;	
 	
-	private List<Element> classes;
+	private Map<String, Element> classes;
 	
 	/* XcodeCompatibilityVersion enumeration. */
 	private int objectVersion;
@@ -21,7 +19,7 @@ public class PBXDocument {
 	private PBXProject rootObject;
 	
 	public PBXDocument() {
-		this.classes = new ArrayList<Element>();
+		this.classes = new HashMap<String, Element>();
 		this.objects = new HashMap<String, Element>();
 		this.archiveVersion = 1;
 		this.objectVersion = 46;
@@ -37,11 +35,11 @@ public class PBXDocument {
 		}
 	}
 
-	public List<Element> getClasses() {
+	public Map<String, Element> getClasses() {
 		return classes;
 	}
 
-	public void setClasses(List<Element> classes) {
+	public void setClasses(Map<String, Element> classes) {
 		this.classes = classes;
 	}
 

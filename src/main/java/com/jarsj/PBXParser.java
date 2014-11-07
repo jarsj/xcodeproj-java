@@ -38,7 +38,8 @@ public class PBXParser {
 				.get("archiveVersion")));
 		this.document.setObjectVersion(parseToJavaObject(dict
 				.get("objectVersion")));
-		this.document.setClasses(new ArrayList<Element>());
+		this.document.setClasses(toElementMap(parseToMap((NSDictionary) dict
+				.get("classes"))));
 		this.document.setRootObject((PBXProject) parseObject(
 				(String) parseToJavaObject(dict.get("rootObject")),
 				(NSDictionary) dict.get("objects")));
@@ -306,8 +307,7 @@ public class PBXParser {
 				.get("buildSettings")));
 		buildConfiguration.setName((String) parseToJavaObject(eleDict
 				.get("name")));
-		buildConfiguration.setReference((String) parseToJavaObject(eleDict
-				.get("reference")));
+		buildConfiguration.setReference(key);
 		parsedObjects.put(key, buildConfiguration);
 		parseInProgressObjects.remove(key);
 		return buildConfiguration;
@@ -663,8 +663,7 @@ public class PBXParser {
 				Object obj = key;
 				if (((NSDictionary) this.dict.get("objects")).containsKey(key)) {
 					obj = parseObject(key,
-							(NSDictionary) this.dict.get("objects"));
-					;
+							(NSDictionary) this.dict.get("objects"));					
 				}
 				outputList.add(obj);
 			}
